@@ -17,6 +17,9 @@ const client = new Client({
 client.once('ready', () => {
   console.log(`Logged in as ${client.user.tag}`);
   checkForNewVideo(); // Send an alert for the latest video on startup
+
+  // Check for new videos every hour (in milliseconds)
+  setInterval(checkForNewVideo, 3600000);
 });
 
 async function checkForNewVideo() {
@@ -46,3 +49,4 @@ async function checkForNewVideo() {
 
 // Log in to Discord
 client.login(discordToken);
+
